@@ -4,9 +4,8 @@ services:
   postgres:
     image: postgres:latest
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: secretpassword
-      POSTGRES_DB: mydatabase
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pg_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     ports:
@@ -18,10 +17,10 @@ services:
   pgadmin:
     image: dpage/pgadmin4:latest
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com
-      PGADMIN_DEFAULT_PASSWORD: adminpassword
+      PGADMIN_DEFAULT_EMAIL: admin@sample.com
+      PGADMIN_DEFAULT_PASSWORD: sample
     ports:
-      - "8080:80"
+      - "8081:80"
     networks:
       - postgres_network
     restart: unless-stopped
